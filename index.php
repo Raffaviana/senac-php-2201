@@ -16,7 +16,7 @@ $var = '<br>' . "Olá mundo! $num";//O ponto é o operador de concatenação
 
 echo $var;
 
-echo '<br><br><h1 vamos tomar café</h1>';
+echo '<br><br><h1> vamos tomar café</h1>';
 
 //var_dump($var);
 
@@ -54,3 +54,40 @@ $nomes[2] = ['nome' => 'bono',
 echo "<pre>\n\n";
 
 var_dump($nomes);
+
+echo '<table border="1">
+    <tr>
+        <td>ID</td><td>Nome</td><td>Senha</td>
+    </tr>';
+
+foreach( $nomes as $id => $valor){
+
+    echo '<tr>';
+    echo "<td> $id</td><td> {$valor['nome']}</td><td> {$valor['senha']}</td>";
+    echo '</tr>';
+};
+
+echo '</table>';
+
+//id = indice
+//valor = o que tiver associado com o indice
+
+$dias =  ['Dom' => ['Domingo', 'Domingo'],
+         'Seg' => ['Segunda', 'Segunda'],
+         'Ter' => ['Terça', 'Terça'],
+         'Qua' => ['Quarta', 'Quarta'],
+         'Qui' => ['Quinta', 'Quinta'],
+         'Sex' => ['Sexta', 'Sexta'],
+         'Sáb' => ['Sábado', 'Sábado']];
+
+echo '<table border="1">
+    <tr>
+        <td>ID</td><td>Nome</td><td>Nome2</td>
+    </tr>';
+foreach($dias as $abreviacao => [$nomesimples,$nomelongo]){
+    echo '<tr>';
+    echo "<td>$abreviacao</td><td>$nomesimples</td><td>$nomelongo</td><br>";
+    echo '</tr>';
+
+};
+echo '</table>';
