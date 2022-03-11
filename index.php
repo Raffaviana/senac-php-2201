@@ -1,56 +1,112 @@
 <?php
 
-//Comentario de linja
+//Comentário de linha
 
 /*
-Comentario de bloco
+Comentário de bloco
 */
 
-define( 'XPTO', 'valor sempre igual' );
+define( 'XPTO', 'Valor sempre igual');//Declaração de constante
 
-echo XPTO;
+echo XPTO;//Usando a constante
 
 $num = 2;
 
-$var = '<br>' . "Olá mundo! $num";//O ponto é o operador de concatenação
+$var = '<br>' . "Olá mundo! $num <br>";//O ponto é o operador de concatenação
 
 echo $var;
 
-echo '<br><br><h1 vamos tomar café</h1>';
+var_dump($var);
 
-//var_dump($var);
-
-//phpinfo(); informações importantes, com variáveis de ambiente
+//phpinfo(); Informações importantes, como variáveis de ambiente
 
 //Após o café
 
 $domingo = 'Domingo';
-$segunda = 'Segunda-Feira';
-$terca   = 'Terça-Feira';
-$quarta  = 'Quarta-Feira';
-$quinta  = 'Quinta-Feira';
-$sexta   = 'Sexta-Feira';
+$segunda = 'Segunda-feira';
+$terca   = 'Terça-feira';
+$quarta  = 'Quarta-feira';
+$quinta  = 'Quinta-feira';
+$sexta   = 'Sexta-feira';
 $sabado  = 'Sábado';
 
-$diaSemana = [  'Dom' => 'Domingo', //Podemos declara vetor com array
-                'Seg' => 'Segunda-Feira', 
-                'Ter' => 'Terça-Feira', 
-                'Qua' => 'Quarta-Feira', 
-                'Qui' => 'Quinta-Feira', 
-                'Sex' => 'Sexta-Feira', 
-                'Sáb' => 'Sábado'];
+$diaSemana = [  'Dom'  => 'Domingo', //Podemos declarar vetor com array() também 
+                'Seg'  => 'Segunda-feira', 
+                'Ter'  => 'Terça-feira',
+                'Qua'  => 'Quarta-feira', 
+                'Qui'  => 'Quinta-feira', 
+                'Sex'  => 'Sexta-feira',
+                'Sab'  => 'Sábado'];
 
 echo '<br>Hoje é ' . $diaSemana['Seg'];//Exemplo sem interpolação
 
-echo "<br>Hoje é  . {$diaSemana['Sáb']}";//Exemplo com interpolação
+echo "<br>Hoje é {$diaSemana['Qui']}";//Exemplo com interpolação
 
-$nomes[0] = ['nome' => 'Luiz',
-             'senha' => '123'];
-$nomes[1] = ['nome' => 'fer',
-             'senha' => '321'];
-$nomes[2] = ['nome' => 'bono',
-             'senha' => '627'];
-             
-echo "<pre>\n\n";
+$usuario[0] = [ 'nome'=>'Luiz', 
+                'senha'=>'123'];
+$usuario[1] = [ 'nome'=>'Fer', 
+                'senha'=>'321'];
+$usuario[2] = [ 'nome'=>'Bono', 
+                'senha'=>'627'];          
 
-var_dump($nomes);
+echo '<table border="1">
+        <tr>
+            <td>ID</td><td>Nome</td><td>Senha</td>
+        </tr>';
+
+foreach( $usuario as $id => $valor){//looping para vetores
+
+    echo '<tr>';
+    
+    echo "<td>$id</td><td>{$valor['nome']}</td><td>{$valor['senha']}</td>";
+
+    echo '</tr>';
+}
+
+echo '</table>';
+
+
+$dias = [   'Dom' => ['Domingo','Domingo'],
+            'Seg' => ['Segunda','Segunda-feira'],
+            'Ter' => ['Terça','Terça-feira'],
+            'Qua' => ['Quarta','Quarta-feira'],
+            'Qui' => ['Quinta','Quinta-feira'],
+            'Sex' => ['Sexta','Sexta-feira'],
+            'Sab' => ['Sábado','Sábado']];
+
+foreach($dias as $abreviacao => $nomes){
+
+    echo "$abreviacao: {$nomes[0]} ou {$nomes[0]}<br>";
+}        
+
+foreach($dias as $abreviacao => [$nomeCurto, $nomeLongo]){
+
+    echo "$abreviacao: $nomeCurto ou $nomeLongo<br>";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
