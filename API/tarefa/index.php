@@ -105,6 +105,37 @@ if($metodo == 'DELETE'){
     }
 
 }
+
+if($metodo == 'PATCH'){
+    
+    $tarefas = json_decode(file_get_contents('php://input'));
+
+    if( json_last_error() != JSON_ERROR_NONE ){
+
+        echo json_encode(["erro" => "JSON invalido"]);
+        exit(http_response_code(400));
+    }
+    if( !isset($tarefas->descricao) || !isset($tarefas->imagem)){
+
+        echo json_encode(["erro" => "Campos obrigatorios: Descricao e Imagem"]);
+        exit(http_response_code(400));
+    }
+
+    $stmt = $database->prepare("UPDATE tarefas 
+                                SET descricao = :descricao, imagem = :imagem
+                                WHERE id = :id AND apagado = 0");
+
+    $stmt->bindParam(':descricao', $tarefas->descricao);
+    $stmt->bindParam(':imagem', $tarefas->imagem);
+    $stmt->bindParam(':id', $tarefas->id);
+
+    if($stmt->execute()){
+        exit(http_response_code(200));
+    }else{
+        exit(http_response_code(500));
+    }
+}
+
 //FIM se o requisitante usar o método DELETE
 
 //Retorna código de erro método não permitído
